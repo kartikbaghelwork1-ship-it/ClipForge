@@ -4,39 +4,94 @@ A personal, localhost video-to-shorts studio. FastAPI + plain JavaScript, with F
 
 ## 🚀 Quick Start
 
-### Prerequisites
+### 1. Install Prerequisites
 
-| Dependency | Version | Notes |
-|---|---|---|
-| **Python** | 3.11 – 3.13 | Tested with 3.12 |
-| **FFmpeg** | 7+ (tested with 9) | Must include `libass`, `libx264`, `afftdn`, `zoompan` |
-| **Node.js** | 18+ | Required for YouTube downloads via yt-dlp |
-
-### Installation
+<details>
+<summary><b>🍎 macOS</b></summary>
 
 ```bash
-# 1. Clone the repository
+# Install Homebrew (if not installed)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install Python, FFmpeg, Node.js, and Git
+brew install python@3.12 ffmpeg node git
+```
+
+</details>
+
+<details>
+<summary><b>🐧 Linux (Ubuntu/Debian)</b></summary>
+
+```bash
+# Update package list
+sudo apt update
+
+# Install Python 3.12
+sudo apt install -y python3.12 python3.12-venv python3-pip
+
+# Install FFmpeg (with required libraries)
+sudo apt install -y ffmpeg
+
+# Install Node.js 18+
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt install -y nodejs
+
+# Install Git
+sudo apt install -y git
+```
+
+</details>
+
+<details>
+<summary><b>🪟 Windows</b></summary>
+
+```powershell
+# Option 1: Using winget (Windows Package Manager)
+winget install Python.Python.3.12
+winget install Gyan.FFmpeg
+winget install OpenJS.NodeJS.LTS
+winget install Git.Git
+
+# Option 2: Manual download
+# Python  → https://www.python.org/downloads/
+# FFmpeg  → https://www.gyan.dev/ffmpeg/builds/ (add to PATH)
+# Node.js → https://nodejs.org/
+# Git     → https://git-scm.com/download/win
+```
+
+> ⚠️ **Important:** During Python install, check **"Add Python to PATH"**. After installing FFmpeg, make sure it's added to your system PATH.
+
+</details>
+
+#### Verify Installation
+
+```bash
+python3 --version    # Should show 3.11, 3.12, or 3.13
+ffmpeg -version      # Should show 7+
+node --version       # Should show 18+
+git --version        # Any recent version
+```
+
+### 2. Clone & Setup
+
+```bash
+# Clone the repository
 git clone https://github.com/kartikbaghelwork1-ship-it/ClipForge.git
 cd ClipForge
 
-# 2. Run the setup script (creates .venv and installs dependencies)
-./setup.sh
-
-# On Windows:
-# setup.cmd
+# Run the setup script (creates .venv and installs all dependencies)
+./setup.sh            # macOS / Linux
+# setup.cmd           # Windows
 
 # To specify a Python version:
 # PYTHON=python3.12 ./setup.sh
 ```
 
-### Run
+### 3. Run
 
 ```bash
-# Start the server
-./start.sh
-
-# On Windows:
-# start.cmd
+./start.sh            # macOS / Linux
+# start.cmd           # Windows
 ```
 
 Open **http://127.0.0.1:8000** in your browser. Stop with `Ctrl+C`.
