@@ -2,18 +2,51 @@
 
 A personal, localhost video-to-shorts studio. FastAPI + plain JavaScript, with FFmpeg, faster-whisper, OpenCV, and yt-dlp. No paid API keys or frontend build step.
 
-## Run
+## 🚀 Quick Start
 
-This machine has a configured `.venv` and a downloaded Tiny speech model.
+### Prerequisites
 
-```sh
-cd /Users/kartik/.codex/.chatgpt-projects/g-p-6aa64f9e735c8191847057911798b13e/clipforge
-./start.sh
+| Dependency | Version | Notes |
+|---|---|---|
+| **Python** | 3.11 – 3.13 | Tested with 3.12 |
+| **FFmpeg** | 7+ (tested with 9) | Must include `libass`, `libx264`, `afftdn`, `zoompan` |
+| **Node.js** | 18+ | Required for YouTube downloads via yt-dlp |
+
+### Installation
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/kartikbaghelwork1-ship-it/ClipForge.git
+cd ClipForge
+
+# 2. Run the setup script (creates .venv and installs dependencies)
+./setup.sh
+
+# On Windows:
+# setup.cmd
+
+# To specify a Python version:
+# PYTHON=python3.12 ./setup.sh
 ```
 
-Open **http://127.0.0.1:8000**. Stop with Ctrl+C. To use another port: `PORT=8001 ./start.sh`.
+### Run
 
-On a fresh machine, install Python 3.11–3.13 and FFmpeg with `libass`, `libx264`, `afftdn`, and `zoompan` support, then run `./setup.sh`. Set `PYTHON=python3.12 ./setup.sh` to select an interpreter. For YouTube support, install Node.js or another yt-dlp-supported JavaScript runtime; this app enables Node explicitly. The tested environment uses Python 3.12, FFmpeg 9, and the exact packages captured in `requirements-lock.txt`.
+```bash
+# Start the server
+./start.sh
+
+# On Windows:
+# start.cmd
+```
+
+Open **http://127.0.0.1:8000** in your browser. Stop with `Ctrl+C`.
+
+To use a different port:
+```bash
+PORT=8001 ./start.sh
+```
+
+> **Note:** The first run downloads the speech model weights (~150 MB). Subsequent runs use the local cache. The tested environment uses the exact packages captured in `requirements-lock.txt`.
 
 ## Neon studio update
 
@@ -101,7 +134,11 @@ To add a preset, add an entry to `PRESETS`; the UI reads it automatically. To ad
 ## Validation
 
 ```sh
-.venv/bin/python -m pytest -q tests
+# Activate your virtual environment first
+source .venv/bin/activate   # macOS/Linux
+# .venv\Scripts\activate    # Windows
+
+python -m pytest -q tests
 node --check static/app.js
 ```
 
