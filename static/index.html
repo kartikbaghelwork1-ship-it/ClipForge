@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Clipforge — Make the moment</title><link rel="stylesheet" href="/style.css?v=7"><link rel="stylesheet" href="/studio.css?v=7"></head>
+<body>
+<aside class="sidebar">
+<a class="brand" href="/" aria-label="Clipforge home"><span class="brand-icon">c<span>↗</span></span>clipforge<span class="brand-dot">.</span></a>
+<div class="workspace-label">YOUR WORKSPACE</div>
+<button class="nav-item selected" id="new-project"><span>▦</span> Studio <span class="nav-pill">LOCAL</span></button>
+<div class="project-heading">RECENT PROJECTS</div><div id="projects" class="projects"><p class="muted">Your projects will live here.</p></div>
+<div class="sidebar-bottom"><span class="online-dot"></span><div>Runs on your machine<small>No subscriptions. Your files stay local.</small></div></div>
+</aside>
+<main>
+<header><div class="breadcrumb">Workspace <span>/</span> <b>Studio</b></div><div id="health" class="health"><span class="online-dot"></span> Local engine</div></header>
+<div class="page">
+<section class="hero"><div class="eyebrow"><span>✦</span> LONG VIDEO. SHORT STORY.</div><h1>Make the moment<span>.</span></h1><p>Turn your long videos into shorts worth watching.</p></section>
+<div id="global-error" class="alert error hidden" role="alert"></div>
+<section id="create-view"><div class="quality-note">✦ Live preview. Speech-synced captions. Full-screen 9:16, ready to make yours.</div>
+<div class="creation-grid">
+<div class="source-card panel"><div class="section-top"><h2><span class="step">01</span> Start with a video</h2><span class="tiny-tag">UP TO 2 GB</span></div>
+<div class="tabs" role="tablist"><button class="tab active" id="upload-tab" role="tab" aria-selected="true">↑ &nbsp; Upload video</button><button class="tab" id="youtube-tab" role="tab" aria-selected="false">▷ &nbsp; YouTube link</button></div>
+<div id="upload-panel"><label class="dropzone" id="dropzone"><input type="file" id="file" accept=".mp4,.mov,.mkv,.webm,.avi,.m4v"><span class="upload-icon">↥</span><strong id="file-name">Drop your video here</strong><span id="file-detail">or <u>browse files</u> to get started</span><small>MP4, MOV, WebM, MKV · up to 3 hours</small></label></div>
+<div id="youtube-panel" class="youtube-panel hidden"><span class="youtube-icon">▶</span><label for="url">Paste a YouTube video link</label><input id="url" type="url" placeholder="https://www.youtube.com/watch?v=…"><small>Public videos work best. Use content you own or have permission to edit.</small></div>
+<div class="privacy"><span>⌁</span> Edited on your device. No video uploads to a cloud service.</div>
+</div>
+<div class="recipe-card panel"><div class="section-top"><h2><span class="step">02</span> Set the vibe</h2><span class="tiny-tag">PRESET</span></div><div id="presets" class="preset-grid"></div>
+<div class="field-row"><label>Clip length<select id="length"><option value="15">~15 seconds</option><option value="30" selected>~30 seconds</option><option value="45">~45 seconds</option><option value="60">~60 seconds</option><option value="90">~90 seconds</option></select></label><label>Number of clips<select id="count"><option>1</option><option selected>3</option><option>5</option><option>8</option></select></label></div>
+<div class="field-row"><label>Layout<select id="aspect"><option value="9:16">9:16 · fill screen</option><option value="3:4">3:4 · reference</option></select></label><label>Framing<select id="framing"><option value="auto">Fill · automatic crop</option><option value="safe">Safe auto · may letterbox</option><option value="fit">Fit · wide video inside frame</option><option value="center">Center crop</option></select></label></div><p class="helper">Finds distinct moments; shorter videos may produce fewer clips.</p></div>
+</div>
+<section class="panel caption-panel"><div class="section-top"><h2><span class="step">03</span> Give it a voice</h2><span class="section-subtitle">15 caption styles · animated in your export</span></div><div id="styles" class="styles"></div></section>
+<div class="bottom-grid"><section class="panel finishing"><div class="section-top"><h2>Finishing touches</h2><span class="tiny-tag">ON-DEVICE</span></div><div class="toggles"><label><input id="tracking" type="checkbox" checked><span>Face-guided framing<small>Lock the shot; preserve wider scenes</small></span></label><label><input id="captions" type="checkbox" checked><span>Auto captions<small>Local speech recognition</small></span></label><label><input id="motion" type="checkbox"><span>Edge transitions<small>Short fades · no artificial shake</small></span></label><label><input id="sfx" type="checkbox" disabled><span>Sound accents<small>Subtle pops, whooshes & hits</small></span></label><label><input id="enhance" type="checkbox" checked><span>Clean up video & audio<small>Light sharpen · gentle audio cleanup</small></span></label><label class="model-label"><span>Speech model<small>First use downloads model weights</small></span><select id="model"><option value="tiny">Tiny · draft quality</option><option value="base">Base · balanced</option><option value="small" selected>Small · more accurate</option></select></label></div></section><section class="launch-card"><span class="spark">✳</span><h2>A little footage.<br>A lot of possibility.</h2><p>Find the hook. Frame the story.<br>Make it yours before you export.</p><button id="generate" class="primary">Generate clips <span>↗</span></button><small>3:4 or 9:16 · HD MP4 · No paid APIs</small></section></div>
+<div class="footer-note">BUILT FOR YOUR NEXT GREAT SHORT <span>✦</span> YouTube Shorts &nbsp; / &nbsp; Instagram Reels &nbsp; / &nbsp; TikTok</div>
+</section>
+<section id="project-view" class="hidden"><div class="project-title"><div><span class="eyebrow">PROJECT</span><h2 id="project-name"></h2></div><button class="secondary" id="back">+ New project</button></div><div id="progress-panel" class="panel progress-panel"><div><span class="spinner"></span><strong id="stage">Getting started</strong><span id="progress-number">0%</span></div><progress id="progress" max="100" value="0"></progress><p>Processing runs in a local queue. You can leave this page and return while the server stays running.</p></div><div id="warnings"></div><div class="result-heading"><h2 id="result-title">Your clips</h2><span>Scores reflect speech and audio heuristics, not predicted views.</span></div><div id="clips" class="clips"></div></section>
+</div></main><div id="toast" role="status" class="toast hidden"></div>
+<script src="/live.js?v=7" defer></script><script src="/editor.js?v=7" defer></script><script src="/app.js?v=7" defer></script></body></html>
